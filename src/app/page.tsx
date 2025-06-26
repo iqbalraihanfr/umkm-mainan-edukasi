@@ -8,6 +8,7 @@ import Link from "next/link";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import FAQSection from "@/components/FAQSection";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
+import Navbar from "@/components/Navbar";
 // import QuickViewModal from '@/components/QuickViewModal';
 
 const Index = () => {
@@ -129,6 +130,7 @@ const Index = () => {
 
   return (
     <div className="w-full">
+      <Navbar />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-wood-50 to-craft-100 overflow-hidden">
         <div className="absolute inset-0">

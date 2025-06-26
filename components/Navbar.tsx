@@ -1,9 +1,8 @@
-
-'use client';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { Menu, X, Globe } from 'lucide-react';
+"use client";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Menu, X, Globe } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,25 +13,27 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navItems = [
-    { href: '/', label: t.nav.home },
-    { href: '/products', label: t.nav.products },
-    { href: '/about', label: t.nav.about },
-    { href: '/contact', label: t.nav.contact },
+    { href: "/", label: t.nav.home },
+    { href: "/products", label: t.nav.products },
+    { href: "/about", label: t.nav.about },
+    { href: "/contact", label: t.nav.contact },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-    }`}>
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-amber-800 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">L</span>
             </div>
@@ -44,20 +45,22 @@ const Navbar = () => {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                to={item.href}
+                href={item.href}
                 className="text-gray-700 hover:text-amber-800 transition-colors duration-200 font-medium"
               >
                 {item.label}
               </Link>
             ))}
-            
+
             {/* Language Toggle */}
             <button
               onClick={toggleLanguage}
               className="flex items-center space-x-1 px-3 py-1 rounded-full bg-amber-100 hover:bg-amber-200 transition-colors duration-200"
             >
               <Globe size={16} />
-              <span className="text-sm font-medium">{language.toUpperCase()}</span>
+              <span className="text-sm font-medium">
+                {language.toUpperCase()}
+              </span>
             </button>
           </div>
 
@@ -77,7 +80,7 @@ const Navbar = () => {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  to={item.href}
+                  href={item.href}
                   className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-800 hover:bg-gray-50 rounded-md transition-colors duration-200"
                   onClick={() => setIsOpen(false)}
                 >
@@ -89,7 +92,9 @@ const Navbar = () => {
                 className="flex items-center space-x-2 px-3 py-2 text-base font-medium text-gray-700 hover:text-amber-800 hover:bg-gray-50 rounded-md transition-colors duration-200 w-full"
               >
                 <Globe size={20} />
-                <span>{language === 'en' ? 'English' : 'Bahasa Indonesia'}</span>
+                <span>
+                  {language === "en" ? "English" : "Bahasa Indonesia"}
+                </span>
               </button>
             </div>
           </div>
