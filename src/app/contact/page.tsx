@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { MapPin, Phone, Mail, MessageCircle, Clock, Send } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const ContactPage = () => {
   const { t } = useLanguage();
@@ -16,14 +18,14 @@ const ContactPage = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     // Reset form
     setFormData({ name: '', email: '', message: '' });
     setIsSubmitting(false);
-    
+
     // Show success message (you could use a toast notification here)
     alert('Message sent successfully!');
   };
@@ -35,6 +37,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Navbar />
       {/* Hero section */}
       <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-amber-800 to-amber-600">
         <div className="absolute inset-0 bg-black/30"></div>
@@ -49,7 +52,7 @@ const ContactPage = () => {
           {/* Contact Form */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -129,7 +132,7 @@ const ContactPage = () => {
             {/* Contact Details */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -199,6 +202,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

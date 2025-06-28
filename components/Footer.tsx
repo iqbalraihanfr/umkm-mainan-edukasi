@@ -1,6 +1,7 @@
 
 'use client';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
+
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -39,10 +40,10 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">{t.footer.quickLinks}</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.home}</Link></li>
-              <li><Link to="/products" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.products}</Link></li>
-              <li><Link to="/about" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.about}</Link></li>
-              <li><Link to="/contact" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.contact}</Link></li>
+              <li><Link href="/" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.home}</Link></li>
+              <li><Link href="/products" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.products}</Link></li>
+              <li><Link href="/about" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.about}</Link></li>
+              <li><Link href="/contact" className="text-amber-200 hover:text-white transition-colors duration-200">{t.nav.contact}</Link></li>
             </ul>
           </div>
 
