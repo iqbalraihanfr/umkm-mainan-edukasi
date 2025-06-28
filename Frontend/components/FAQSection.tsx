@@ -48,12 +48,12 @@ const FAQSection: React.FC = () => {
     <section className="py-16 bg-craft-50">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className=" bg-blue-400 font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className=" font-playfair text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {language === 'en' ? 'Frequently Asked Questions' : 'Pertanyaan yang Sering Diajukan'}
           </h2>
           <div className="w-24 h-1 bg-wood-600 mx-auto"></div>
         </div>
-        
+
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -70,7 +70,7 @@ const FAQSection: React.FC = () => {
                   <ChevronDown className="text-gray-400 flex-shrink-0" size={20} />
                 )}
               </button>
-              
+
               {openIndex === index && (
                 <div className="px-6 pb-4 animate-slide-up">
                   <p className="text-gray-700 leading-relaxed">

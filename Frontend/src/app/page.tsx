@@ -6,9 +6,9 @@ import { ArrowRight, Leaf, Award, Heart, Users } from "lucide-react";
 import Link from "next/link";
 // import ProductCard from '@/components/ProductCard';
 import TestimonialsSection from "@/components/TestimonialsSection";
-import FAQSection from "@/components/FAQSection";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 // import QuickViewModal from '@/components/QuickViewModal';
 
 const Index = () => {
@@ -199,11 +199,10 @@ const Index = () => {
           <div
             id="categories"
             data-animate
-            className={`text-center mb-12 transition-all duration-1000 ${
-              animatedElements.has("categories")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`text-center mb-12 transition-all duration-1000 ${animatedElements.has("categories")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               {t.home.categories}
@@ -212,11 +211,10 @@ const Index = () => {
           </div>
 
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-1000 delay-300 ${
-              animatedElements.has("categories")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 transition-all duration-1000 delay-300 ${animatedElements.has("categories")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             {categories.map((category, index) => (
               <href
@@ -248,11 +246,10 @@ const Index = () => {
             <div
               id="story"
               data-animate
-              className={`transition-all duration-1000 ${
-                animatedElements.has("story")
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-10"
-              }`}
+              className={`transition-all duration-1000 ${animatedElements.has("story")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
+                }`}
             >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
                 {t.home.story}
@@ -268,11 +265,10 @@ const Index = () => {
               </href>
             </div>
             <div
-              className={`transition-all duration-1000 delay-300 ${
-                animatedElements.has("story")
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-10"
-              }`}
+              className={`transition-all duration-1000 delay-300 ${animatedElements.has("story")
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
+                }`}
             >
               <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-xl">
                 <div
@@ -296,11 +292,10 @@ const Index = () => {
           <div
             id="values"
             data-animate
-            className={`text-center mb-12 transition-all duration-1000 ${
-              animatedElements.has("values")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`text-center mb-12 transition-all duration-1000 ${animatedElements.has("values")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               {t.home.values}
@@ -309,11 +304,10 @@ const Index = () => {
           </div>
 
           <div
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 transition-all duration-1000 delay-300 ${
-              animatedElements.has("values")
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 transition-all duration-1000 delay-300 ${animatedElements.has("values")
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             {values.map((value, index) => (
               <div key={index} className="text-center">
@@ -352,11 +346,11 @@ const Index = () => {
             </button>
           </div>
         </div>
+
       </section>
 
-      {/* FAQ Section */}
-      <FAQSection />
 
+      <Footer />
       {/* Quick View Modal */}
       {/*
       <QuickViewModal
@@ -366,6 +360,7 @@ const Index = () => {
       />
       */}
     </div>
+
   );
 };
 

@@ -1,10 +1,11 @@
 
 'use client';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Award, Heart, Users, Leaf, Handshake } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FAQSection from '@/components/FAQSection';
 import { Truculenta, Fredoka } from 'next/font/google';
 
 const poppins = Truculenta({
@@ -19,6 +20,17 @@ const fredoka = Fredoka({
 
 const AboutPage = () => {
   const { t } = useLanguage();
+  const carouselRef = useRef<HTMLDivElement | null>(null);
+  const moveSlide = (direction: number) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return; // hindari null error
+
+    const slides = carousel.children.length;
+    const newIndex = (currentIndex + direction + slides) % slides;
+    setCurrentIndex(newIndex);
+    carousel.style.transform = `translateX(-${newIndex * 100}%)`;
+  };
+
 
   const values = [
     {
@@ -166,16 +178,16 @@ const AboutPage = () => {
       </section>
       {/* We Believe In Section */}
 
-      <section className=" bg-white py-0"> <div className="max-w-6xl mx-auto px-4 text-center"> <h2 className={`${poppins.className} text-3xl md:text-4xl font-bold text-blue-800 mb-12`}>WE BELIEVE IN</h2>
+      <section className=" bg-white py-0"> <div className="max-w-6xl mx-auto px-70 text-center"> <h2 className={`${poppins.className} text-3xl md:text-4xl font-bold text-blue-800 mb-12`}>WE BELIEVE IN</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Item 1 */}
           <div className="flex flex-col items-center">
             <img
               src="/images/s31.png"
               alt="Open-Ended Play"
-              className="h-28 w-auto mb-6"
+              className="h-35 w-auto mb-6"
             />
-            <p className={`${poppins.className} text-blue-800 font-semibold text-lg`}>Open-Ended Play</p>
+            <p className={`${poppins.className} text-blue-800 font-semibold text-lg`}>Bermain Tanpa Batas</p>
           </div>
 
           {/* Item 2 */}
@@ -183,9 +195,9 @@ const AboutPage = () => {
             <img
               src="/images/s32.png"
               alt="Screen-Free Time"
-              className="h-28 w-auto mb-6"
+              className="h-35 w-auto mb-6"
             />
-            <p className={`${poppins.className} text-blue-800 font-semibold text-lg`}>Screen-Free Time</p>
+            <p className={`${poppins.className} text-blue-800 font-semibold text-lg`}>Waktu Bebas Layar</p>
           </div>
 
           {/* Item 3 */}
@@ -193,9 +205,9 @@ const AboutPage = () => {
             <img
               src="/images/s33.png"
               alt="Sustainably Made Toys"
-              className="h-28 w-auto mb-6"
+              className="h-35 w-auto mb-6"
             />
-            <p className={`${poppins.className} text-blue-800 font-semibold text-lg`}>Sustainably Made Toys</p>
+            <p className={`${poppins.className} text-blue-800 font-semibold text-lg whitespace-nowrap`}>Produk Ramah Lingkungan</p>
           </div>
         </div>
       </div></section>
@@ -209,7 +221,7 @@ const AboutPage = () => {
               <img
                 src="/images/rocket.png"
                 alt="Rocket Icon"
-                className="h-28 w-auto"
+                className="h-50 w-auto mt-40"
               />
             </div>
 
@@ -226,7 +238,7 @@ const AboutPage = () => {
               <img
                 src="/images/astronot.png"
                 alt="Astronaut Icon"
-                className="h-28 w-auto"
+                className="h-50 w-auto -mt-20"
               />
             </div>
           </div>
@@ -236,8 +248,8 @@ const AboutPage = () => {
       <div className="max-w-7xl mx-auto px-4 py-16">
 
         {/* Vision & Mission */}
-        <section className="py-16 px-6 md:px-24 bg-white text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1c2957] mb-14">
+        <section className="-mt-15 py-0 px-6 md:px-24 bg-white text-center">
+          <h2 className={`${poppins.className} text-3xl md:text-4xl font-bold text-[#1c2957] mb-14`}>
             VISI & MISI
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -245,14 +257,14 @@ const AboutPage = () => {
             <div className="bg-[#f9f9fb] p-6 rounded-2xl shadow-sm">
               <div className="flex justify-center mb-4">
                 <img
-                  src="/images/s33.png"
+                  src="https://www.melissaanddoug.com/cdn/shop/files/OurStory_OpenEndedPlay_Doodles_Imaginative.png?v=1658947380&width=260"
                   alt="Sustainably Made Toys"
                   className="h-28 w-auto mb-6"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-[#1c2957] mb-2">It’s Imaginative</h3>
-              <p className="text-[#3e3e3e] text-base">
-                Melestarikan keahlian tradisional pengrajin Indonesia.
+              <h3 className={`${poppins.className} text-xl font-semibold text-[#1c2957] mb-2`}> It’s Imaginative</h3>
+              <p className={`${fredoka.className} text-[#3e3e3e] text-base`}>
+                Menghadirkan produk yang mendorong daya imajinasi dan kreativitas anak-anak dalam bermain dan belajar.
               </p>
             </div>
 
@@ -260,14 +272,14 @@ const AboutPage = () => {
             <div className="bg-[#f9f9fb] p-6 rounded-2xl shadow-sm">
               <div className="flex justify-center mb-4">
                 <img
-                  src="/images/s33.png"
+                  src="https://www.melissaanddoug.com/cdn/shop/files/OurStory_OpenEndedPlay_Doodles_KidPowered.png?v=1658947381&width=260"
                   alt="Sustainably Made Toys"
                   className="h-28 w-auto mb-6"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-[#1c2957] mb-2">It’s Kid-Powered</h3>
-              <p className="text-[#3e3e3e] text-base">
-                Memberdayakan pengrajin lokal melalui ekonomi berkelanjutan.
+              <h3 className={`${poppins.className} text-xl font-semibold text-[#1c2957] mb-2`}>It’s Kid-Powered</h3>
+              <p className={`${fredoka.className} text-[#3e3e3e] text-base`}>
+                Mengembangkan mainan dan alat edukasi yang bebas dari teknologi layar dan daya baterai.
               </p>
             </div>
 
@@ -275,14 +287,14 @@ const AboutPage = () => {
             <div className="bg-[#f9f9fb] p-6 rounded-2xl shadow-sm">
               <div className="flex justify-center mb-4">
                 <img
-                  src="/images/s33.png"
+                  src="https://www.melissaanddoug.com/cdn/shop/files/OurStory_OpenEndedPlay_Doodles_SkillBuilding_6d36640f-91fb-4f7b-85a2-5900ef2548fe.png?v=1659036151&width=260"
                   alt="Sustainably Made Toys"
                   className="h-28 w-auto mb-6"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-[#1c2957] mb-2">It’s Skill Building</h3>
-              <p className="text-[#3e3e3e] text-base">
-                Mengangkat kualitas produk lokal ke pasar internasional.
+              <h3 className={`${poppins.className} text-xl font-semibold text-[#1c2957] mb-2`}> It’s Skill Building</h3>
+              <p className={`${fredoka.className} text-[#3e3e3e] text-base`}>
+                Memberikan nilai edukatif dalam setiap produk untuk membantu anak mengembangkan kemampuan berpikir.
               </p>
             </div>
 
@@ -290,66 +302,93 @@ const AboutPage = () => {
             <div className="bg-[#f9f9fb] p-6 rounded-2xl shadow-sm">
               <div className="flex justify-center mb-4">
                 <img
-                  src="/images/s33.png"
+                  src="https://www.melissaanddoug.com/cdn/shop/files/OurStory_OpenEndedPlay_Doodles_Fun_6f27ae62-01e7-4c92-b675-c4b1d556d9b9.png?v=1659036151&width=260"
                   alt="Sustainably Made Toys"
                   className="h-28 w-auto mb-6"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-[#1c2957] mb-2">It’s Fun!</h3>
-              <p className="text-[#3e3e3e] text-base">
-                Menghasilkan produk kayu yang estetik dan ramah lingkungan.
+              <h3 className={`${poppins.className} text-xl font-semibold text-[#1c2957] mb-2`}>It’s Fun!</h3>
+              <p className={`${fredoka.className} text-[#3e3e3e] text-base`}>
+                Membuat setiap pengalaman bermain menjadi menyenangkan, penuh warna, dan penuh kejutan.
               </p>
             </div>
           </div>
         </section>
-
-        {/* Values */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <value.icon size={32} className="text-amber-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Gallery */}
-        <section>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Workshop</h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
-            ].map((image, index) => (
-              <div key={index} className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img
-                  src={image}
-                  alt={`Workshop image ${index + 1}`}
-                  className="object-cover hover:scale-105 transition-transform duration-300 w-full h-full"
-                />
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
+      <section className=" py-12">
+        <div className="relative max-w-6xl mx-auto overflow-hidden">
+          {/* Carousel */}
+          <div
+            ref={carouselRef}
+            className="flex transition-transform duration-500 ease-in-out"
+          >
+            {/* Slide 1 */}
+            <div className="min-w-full flex flex-col items-center px-8">
+              <div className="bg-[#a9d28f] rounded-lg p-10 text-center">
+                <div className="text-5xl mb-4">📘</div>
+                <h2 className="text-2xl font-bold text-green-900 mb-2">
+                  Galeri Legowo
+                </h2>
+                <p className="text-green-800">
+                  Learn how it all started with a dream to bring imagination into
+                  children's hands.
+                </p>
+              </div>
+            </div>
+
+            {/* Slide 2 */}
+            <div className="min-w-full flex flex-col items-center px-8">
+              <div className="bg-white rounded-lg p-10 text-center">
+                <img
+                  src="https://images.unsplash.com/photo-1616587891345-658b5cbd860c"
+                  alt="Toys"
+                  className="rounded-xl mb-4"
+                />
+                <h2 className="text-xl font-bold text-green-900 mb-2">
+                  30+ Years of Safe Toys
+                </h2>
+                <p className="text-green-800 text-sm">
+                  Since 1988, we’ve created meaningful toys that inspire hands-on,
+                  open-ended play.
+                </p>
+              </div>
+            </div>
+
+            {/* Slide 3 */}
+            <div className="min-w-full flex flex-col items-center px-8">
+              <div className="bg-white rounded-lg p-10 text-center">
+                <img
+                  src="https://images.unsplash.com/photo-1602016752627-f48b127f9a83"
+                  alt="Promise"
+                  className="rounded-xl mb-4"
+                />
+                <h2 className="text-xl font-bold text-green-900 mb-2">
+                  Our Promise
+                </h2>
+                <p className="text-green-800 text-sm">
+                  Every product is a commitment to the highest quality standards
+                  for kids everywhere.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={() => moveSlide(-1)}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-700 text-white rounded-full w-10 h-10"
+          >
+            ❮
+          </button>
+          <button
+            onClick={() => moveSlide(1)}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-700 text-white rounded-full w-10 h-10"
+          >
+            ❯
+          </button>
+        </div>
+      </section>
+      <FAQSection />
       <Footer />
     </div>
   );

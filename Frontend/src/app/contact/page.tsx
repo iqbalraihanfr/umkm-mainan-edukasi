@@ -6,6 +6,7 @@ import { MapPin, Phone, Mail, MessageCircle, Clock, Send } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
+
 const ContactPage = () => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
@@ -32,21 +33,12 @@ const ContactPage = () => {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent("Hello! I'd like to learn more about your products.");
-    window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+    window.open(`https://wa.me/6281217674477?text=${message}`, '_blank');
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      {/* Hero section */}
-      <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-amber-800 to-amber-600">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative text-center text-white z-10">
-          <h1 className="text-5xl font-bold mb-4">{t.contact.title}</h1>
-          <div className="w-24 h-1 bg-white mx-auto"></div>
-        </div>
-      </section>
-
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
@@ -141,9 +133,7 @@ const ContactPage = () => {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">{t.contact.address}</h3>
                     <p className="text-gray-600">
-                      Jl. Malioboro No. 123<br />
-                      Yogyakarta 55271<br />
-                      Indonesia
+                      Jl. Peltu Wagiso RT 02 RW 01, Kebaron Kec. Tulangan, Kab. Sidoarjo Prov. Jawa Timur, 61273
                     </p>
                   </div>
                 </div>
@@ -153,8 +143,8 @@ const ContactPage = () => {
                     <Phone size={24} className="text-amber-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+62 812-3456-7890</p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Telepon</h3>
+                    <p className="text-gray-600">+62 812-1767-4477</p>
                   </div>
                 </div>
 
@@ -173,7 +163,7 @@ const ContactPage = () => {
                     <Clock size={24} className="text-amber-600" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Business Hours</h3>
+                    <h3 className="font-semibold text-gray-900 mb-1">Jam Kerja</h3>
                     <p className="text-gray-600">
                       Monday - Friday: 9:00 AM - 6:00 PM<br />
                       Saturday: 9:00 AM - 4:00 PM<br />

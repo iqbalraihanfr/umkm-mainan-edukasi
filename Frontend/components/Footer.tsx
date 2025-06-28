@@ -16,7 +16,11 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="text-amber-900 font-bold text-sm">L</span>
+                <img
+                  src="/images/logonav.png" // ganti path ini sesuai dengan lokasi gambar Anda
+                  alt="Logo Legowo"
+                  className="object-contain w-full h-full"
+                />
               </div>
               <span className="text-xl font-bold">Legowo</span>
             </div>
