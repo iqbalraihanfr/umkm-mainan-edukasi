@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import {
   Home,
   Package,
@@ -12,9 +12,35 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const productCategories = [
+  {
+    name: "Educational Toys",
+    path: "/products/educational-toys",
+    nameId: "Mainan Edukatif",
+    icon: "🧩",
+  },
+  {
+    name: "Book Shelves",
+    path: "/products/book-shelves",
+    nameId: "Rak Buku",
+    icon: "📚",
+  },
+  {
+    name: "Data Boards",
+    path: "/products/data-boards",
+    nameId: "Papan Data",
+    icon: "📊",
+  },
+  {
+    name: "Tables & Chairs",
+    path: "/products/tables-chairs",
+    nameId: "Meja & Kursi",
+    icon: "🪑",
+  },
+];
+
 const BottomNavigation: React.FC = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const { language } = useLanguage();
   const [showProductCategories, setShowProductCategories] = useState(false);
 
@@ -26,7 +52,7 @@ const BottomNavigation: React.FC = () => {
       emoji: "🏠",
     },
     {
-      path: "/products",
+      path: "#", // Path is now a placeholder
       icon: Package,
       label: language === "id" ? "Produk" : "Products",
       emoji: "🎨",
@@ -46,51 +72,13 @@ const BottomNavigation: React.FC = () => {
     },
   ];
 
-  const productCategories = [
-    {
-      id: "mainan-edukatif",
-      path: "/categories/mainan-edukatif",
-      name: language === "id" ? "Mainan Edukatif" : "Educational Toys",
-      icon: "🧩",
-      color: "bg-toy-yellow",
-    },
-    {
-      id: "rak-buku",
-      path: "/categories/rak-buku",
-      name: language === "id" ? "Rak Buku" : "Book Shelves",
-      icon: "📚",
-      color: "bg-toy-blue",
-    },
-    {
-      id: "meja-kursi",
-      path: "/categories/meja-kursi",
-      name: language === "id" ? "Meja & Kursi" : "Table & Chairs",
-      icon: "🪑",
-      color: "bg-toy-green",
-    },
-    {
-      id: "papan-data",
-      path: "/categories/papan-data",
-      name: language === "id" ? "Papan Data" : "Learning Boards",
-      icon: "📊",
-      color: "bg-toy-red",
-    },
-  ];
-
   const whatsappAction = () => {
     window.open("https://wa.me/6281234567890", "_blank");
   };
 
   const handleProductClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    if (pathname === "/products") {
-      // If already on products page, just toggle submenu
-      setShowProductCategories(!showProductCategories);
-    } else {
-      // Navigate to products page and show submenu
-      router.push("/products");
-      setShowProductCategories(true);
-    }
+    setShowProductCategories(!showProductCategories);
   };
 
   return (
@@ -112,35 +100,25 @@ const BottomNavigation: React.FC = () => {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-2 gap-3">
               {productCategories.map((category) => (
                 <Link
-                  key={category.id}
+                  key={category.path}
                   href={category.path}
                   onClick={() => setShowProductCategories(false)}
                   className="p-3 bg-wood-50 rounded-xl border border-wood-200 hover:shadow-md transition-all duration-200 hover:scale-105"
                 >
                   <div className="text-center">
-                    <div
-                      className={`w-10 h-10 ${category.color} rounded-xl flex items-center justify-center text-2xl mx-auto mb-2 animate-bounce-gentle`}
-                    >
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-2xl mx-auto mb-2">
                       {category.icon}
                     </div>
                     <span className="text-sm font-medium text-wood-800 leading-tight">
-                      {category.name}
+                      {language === "id" ? category.nameId : category.name}
                     </span>
                   </div>
                 </Link>
               ))}
             </div>
-
-            <Link
-              href="/products"
-              onClick={() => setShowProductCategories(false)}
-              className="block bg-wood-gradient text-wood-800 text-center py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300"
-            >
-              {language === "id" ? "🎪 Lihat Semua" : "🎪 View All"}
-            </Link>
           </div>
         </div>
       )}

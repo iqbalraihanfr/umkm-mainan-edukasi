@@ -1,69 +1,45 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "components/ui/dropdown-menu";
+
+const productCategories = [
+  {
+    name: "Educational Toys",
+    path: "/products/educational-toys",
+    nameId: "Mainan Edukatif",
+  },
+  {
+    name: "Book Shelves",
+    path: "/products/book-shelves",
+    nameId: "Rak Buku",
+  },
+  {
+    name: "Data Boards",
+    path: "/products/data-boards",
+    nameId: "Papan Data",
+  },
+  {
+    name: "Tables & Chairs",
+    path: "/products/tables-chairs",
+    nameId: "Meja & Kursi",
+  },
+];
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
-
-  const productCategories = [
-    {
-      id: "mainan-edukatif",
-      path: "/categories/mainan-edukatif",
-      name: language === "id" ? "Mainan Edukatif" : "Educational Toys",
-      nameEn: "Educational Toys",
-      icon: "🧩",
-      description:
-        language === "id"
-          ? "Puzzle, balok susun, dan permainan pembelajaran"
-          : "Puzzles, building blocks, and learning games",
-      color: "bg-toy-yellow",
-    },
-    {
-      id: "rak-buku",
-      path: "/categories/rak-buku",
-      name: language === "id" ? "Rak Buku" : "Book Shelves",
-      nameEn: "Book Shelves",
-      icon: "📚",
-      description:
-        language === "id"
-          ? "Rak buku kayu untuk koleksi cerita anak-anak"
-          : "Wooden book shelves for children story collections",
-      color: "bg-toy-blue",
-    },
-    {
-      id: "meja-kursi",
-      path: "/categories/meja-kursi",
-      name: language === "id" ? "Meja & Kursi" : "Table & Chairs",
-      nameEn: "Table & Chairs",
-      icon: "🪑",
-      description:
-        language === "id"
-          ? "Set meja kursi belajar ukuran anak-anak"
-          : "Study table and chair sets in children sizes",
-      color: "bg-toy-green",
-    },
-    {
-      id: "papan-data",
-      path: "/categories/papan-data",
-      name: language === "id" ? "Papan Data" : "Learning Boards",
-      nameEn: "Learning Boards",
-      icon: "📊",
-      description:
-        language === "id"
-          ? "Papan tulis, papan magnetik, dan media pembelajaran"
-          : "Writing boards, magnetic boards, and learning media",
-      color: "bg-toy-red",
-    },
-  ];
 
   const navItems = [
     { path: "/about", label: t.navigation.about },
@@ -81,11 +57,11 @@ const Header: React.FC = () => {
                 🧸
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex px-10 flex-col">
               <span className="font-playfair font-bold text-xl text-wood-800 group-hover:text-wood-600 transition-colors">
                 Kayu Ceria
               </span>
-              <span className="text-xs text-wood-500 font-medium">
+              <span className="text-xs text-amber-500 font-medium">
                 {language === "id"
                   ? "Mainan Kayu Edukatif"
                   : "Educational Wooden Toys"}
@@ -95,82 +71,23 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            {/* Products Mega Menu */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsMegaMenuOpen(true)}
-              onMouseLeave={() => setIsMegaMenuOpen(false)}
-            >
-              <button className="flex items-center space-x-1 font-medium text-wood-800 hover:text-wood-600 transition-colors py-2 px-3 rounded-lg hover:bg-wood-50 group">
-                <span>{t.navigation.products}</span>
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-200 ${
-                    isMegaMenuOpen ? "rotate-180" : ""
-                  } group-hover:text-toy-yellow`}
-                />
-                <span className="text-lg ml-1">🎨</span>
-              </button>
-
-              {/* Mega Menu */}
-              {isMegaMenuOpen && (
-                <div className="absolute top-full left-0 w-96 bg-white rounded-2xl shadow-2xl border border-wood-200 p-6 mt-2 animate-fade-in">
-                  <div className="grid grid-cols-1 gap-4">
-                    <div className="text-center mb-4">
-                      <h3 className="font-playfair font-bold text-lg text-wood-800 mb-2">
-                        {language === "id"
-                          ? "🌟 Kategori Produk Kami"
-                          : "🌟 Our Product Categories"}
-                      </h3>
-                      <div className="flex justify-center space-x-1">
-                        <span className="w-2 h-2 bg-toy-yellow rounded-full animate-bounce"></span>
-                        <span
-                          className="w-2 h-2 bg-toy-red rounded-full animate-bounce"
-                          style={{ animationDelay: "0.1s" }}
-                        ></span>
-                        <span
-                          className="w-2 h-2 bg-toy-blue rounded-full animate-bounce"
-                          style={{ animationDelay: "0.2s" }}
-                        ></span>
-                      </div>
-                    </div>
-
-                    {productCategories.map((category, index) => (
-                      <Link
-                        key={category.id}
-                        href={category.path}
-                        className="group p-4 rounded-xl border border-wood-100 hover:border-wood-300 hover:shadow-lg transition-all duration-300 hover:scale-105"
-                        style={{ animationDelay: `${index * 0.1}s` }}
-                      >
-                        <div className="flex items-start space-x-3">
-                          <div
-                            className={`w-12 h-12 ${category.color} rounded-xl flex items-center justify-center text-2xl group-hover:animate-bounce-gentle shadow-md`}
-                          >
-                            {category.icon}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-wood-800 group-hover:text-wood-600 transition-colors mb-1">
-                              {category.name}
-                            </h4>
-                            <p className="text-sm text-wood-600 leading-relaxed">
-                              {category.description}
-                            </p>
-                          </div>
-                        </div>
-                      </Link>
-                    ))}
-
-                    <Link
-                      href="/products"
-                      className="mt-2 bg-wood-gradient text-wood-800 text-center py-3 px-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 border-wood-200"
-                    >
-                      {language === "id"
-                        ? "🎪 Lihat Semua Produk"
-                        : "🎪 View All Products"}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center space-x-1 font-medium text-wood-800 hover:text-wood-600 transition-colors py-2 px-3 rounded-lg hover:bg-wood-50 group">
+                  <span>{t.navigation.products}</span>
+                  <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:text-toy-yellow" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {productCategories.map((category) => (
+                  <DropdownMenuItem key={category.path} asChild>
+                    <Link href={category.path}>
+                      {language === "id" ? category.nameId : category.name}
                     </Link>
-                  </div>
-                </div>
-              )}
-            </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             {/* Other Navigation Items */}
             {navItems.map((item) => (
@@ -258,19 +175,14 @@ const Header: React.FC = () => {
                 <div className="grid grid-cols-2 gap-3">
                   {productCategories.map((category) => (
                     <Link
-                      key={category.id}
+                      key={category.path}
                       href={category.path}
                       onClick={() => setIsMenuOpen(false)}
                       className="p-3 bg-white rounded-xl border border-wood-200 hover:shadow-md transition-all duration-200 hover:scale-105"
                     >
                       <div className="text-center">
-                        <div
-                          className={`w-8 h-8 ${category.color} rounded-lg flex items-center justify-center text-lg mx-auto mb-2`}
-                        >
-                          {category.icon}
-                        </div>
                         <span className="text-sm font-medium text-wood-800">
-                          {category.name}
+                          {language === "id" ? category.nameId : category.name}
                         </span>
                       </div>
                     </Link>

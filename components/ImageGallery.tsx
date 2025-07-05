@@ -1,8 +1,8 @@
-'use client'
-import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+"use client";
+import React, { useState } from "react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { Button } from "components/ui/button";
+import { Dialog, DialogContent } from "components/ui/dialog";
 
 interface ImageGalleryProps {
   images: string[];
@@ -23,7 +23,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, productName }) => {
   };
 
   const handleZoom = () => {
-    setZoomLevel(prev => prev === 1 ? 2 : 1);
+    setZoomLevel((prev) => (prev === 1 ? 2 : 1));
   };
 
   return (
@@ -31,12 +31,12 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, productName }) => {
       {/* Main Image */}
       <div className="relative aspect-square bg-wood-50 rounded-lg overflow-hidden group">
         <img
-          src={images[currentImage] || '/placeholder.svg'}
+          src={images[currentImage] || "/placeholder.svg"}
           alt={productName}
           className="w-full h-full object-cover cursor-zoom-in"
           onClick={() => setIsModalOpen(true)}
         />
-        
+
         {/* Zoom Indicator */}
         <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
           <ZoomIn className="w-4 h-4" />
@@ -72,12 +72,14 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, productName }) => {
             <button
               key={index}
               className={`aspect-square bg-wood-50 rounded-lg overflow-hidden border-2 transition-all ${
-                index === currentImage ? 'border-wood-500' : 'border-transparent hover:border-wood-300'
+                index === currentImage
+                  ? "border-wood-500"
+                  : "border-transparent hover:border-wood-300"
               }`}
               onClick={() => setCurrentImage(index)}
             >
               <img
-                src={image || '/placeholder.svg'}
+                src={image || "/placeholder.svg"}
                 alt={`${productName} ${index + 1}`}
                 className="w-full h-full object-cover"
               />
@@ -111,7 +113,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({ images, productName }) => {
 
             <div className="overflow-auto max-h-[90vh]">
               <img
-                src={images[currentImage] || '/placeholder.svg'}
+                src={images[currentImage] || "/placeholder.svg"}
                 alt={productName}
                 className="w-full h-auto transition-transform duration-300"
                 style={{ transform: `scale(${zoomLevel})` }}

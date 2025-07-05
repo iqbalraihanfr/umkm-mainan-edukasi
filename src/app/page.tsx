@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import FAQ from "@/components/FAQ";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import FAQ from "components/FAQ";
+import { Button } from "components/ui/button";
+import { Card, CardContent } from "components/ui/card";
+import { Input } from "components/ui/input";
 
 interface Feature {
   title: string;
@@ -32,10 +32,10 @@ const Index: React.FC = () => {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-wood-900 mb-6 leading-tight">
+              <h1 className="font-playfair font-bold text-4xl sm:text-5xl lg:text-6xl text-amber-500 mb-6 leading-tight">
                 {t.home.hero.title}
               </h1>
-              <p className="text-xl text-wood-700 mb-8 leading-relaxed">
+              <p className="text-xl text-wood-700 font-di mb-8 leading-relaxed">
                 {t.home.hero.subtitle}
               </p>
               <Link href="/products">

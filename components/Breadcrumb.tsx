@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -36,7 +36,8 @@ const Breadcrumb: React.FC = () => {
         label = language === "id" ? "Kontak" : "Contact";
         break;
       default:
-        label = segment.charAt(0).toUpperCase() + segment.slice(1);
+        label =
+          segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " ");
     }
 
     breadcrumbItems.push({ label, path });

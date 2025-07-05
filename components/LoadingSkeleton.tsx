@@ -1,6 +1,6 @@
-'use client'
-import React from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+"use client";
+import React from "react";
+import { Skeleton } from "components/ui/skeleton";
 
 export const ProductCardSkeleton: React.FC = () => (
   <div className="bg-white border border-wood-200 rounded-lg overflow-hidden">
