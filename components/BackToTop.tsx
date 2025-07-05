@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { ChevronUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const BackToTop: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,13 +29,13 @@ const BackToTop: React.FC = () => {
   return (
     <>
       {isVisible && (
-        <button
+        <Button
           onClick={scrollToTop}
-          className="fixed bottom-20 md:bottom-8 right-4 z-40 bg-wood-600 hover:bg-wood-700 text-white p-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 animate-bounce-in"
-          aria-label="Back to top"
+          className="fixed bottom-6 right-6 z-50 bg-wood-500 hover:bg-wood-600 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+          size="sm"
         >
-          <ChevronUp size={24} />
-        </button>
+          <ArrowUp className="w-5 h-5" />
+        </Button>
       )}
     </>
   );

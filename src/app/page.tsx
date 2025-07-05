@@ -150,8 +150,8 @@ const Index = () => {
           <p className="font-inter text-lg md:text-xl lg:text-2xl text-white/90 mb-8 animate-fade-in animation-delay-300 max-w-2xl mx-auto">
             {t.hero.subtitle}
           </p>
-          <href
-            to="/products"
+          <Link
+            href="/products"
             className="inline-flex items-center px-6 md:px-8 py-3 md:py-4 bg-wood-600 hover:bg-wood-700 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 animate-fade-in animation-delay-600 shadow-lg hover:shadow-xl"
           >
             {t.hero.cta}
@@ -159,7 +159,7 @@ const Index = () => {
               className="ml-2 transition-transform duration-200 group-hover:translate-x-1"
               size={20}
             />
-          </href>
+          </Link>
         </div>
       </section>
 
@@ -218,10 +218,10 @@ const Index = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            {categories.map((category, index) => (
-              <href
+            {categories.map((category) => (
+              <Link
                 key={category.id}
-                to={`/products?category=${category.id}`}
+                href={`/products?category=${category.id}`}
                 className="group relative h-48 md:h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
                 <div
@@ -235,7 +235,7 @@ const Index = () => {
                   </h3>
                   <p className="text-sm opacity-90">{category.count}</p>
                 </div>
-              </href>
+              </Link>
             ))}
           </div>
         </div>
@@ -260,12 +260,12 @@ const Index = () => {
               <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-6">
                 {t.home.storyText}
               </p>
-              <href
-                to="/about"
+              <Link
+                href="/about"
                 className="inline-flex items-center text-amber-600 hover:text-amber-700 font-semibold"
               >
                 Learn More <ArrowRight className="ml-2" size={16} />
-              </href>
+              </Link>
             </div>
             <div
               className={`transition-all duration-1000 delay-300 ${
