@@ -1,4 +1,4 @@
-
+'use client'
 import React from 'react';
 import { Clock, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';

@@ -1,5 +1,7 @@
+'use client'
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronRight, Home } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -9,10 +11,10 @@ interface BreadcrumbItem {
 }
 
 const Breadcrumb: React.FC = () => {
-  const location = useLocation();
+  const pathname = usePathname();
   const { language } = useLanguage();
 
-  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const pathSegments = pathname.split("/").filter(Boolean);
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: language === "id" ? "Beranda" : "Home", path: "/" },
@@ -56,7 +58,7 @@ const Breadcrumb: React.FC = () => {
                 <span className="text-wood-800 font-medium">{item.label}</span>
               ) : (
                 <Link
-                  to={item.path}
+                  href={item.path}
                   className="text-wood-600 hover:text-wood-800 transition-colors"
                 >
                   {item.label}

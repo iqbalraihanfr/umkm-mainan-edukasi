@@ -1,148 +1,257 @@
 
-'use client';
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Award, Heart, Users, Leaf } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
-const AboutPage = () => {
-  const { t } = useLanguage();
+const About: React.FC = () => {
+  const { language, t } = useLanguage();
 
   const values = [
     {
-      icon: Heart,
-      title: 'Passion',
-      titleId: 'Passion',
-      description: 'Every piece is crafted with love and dedication to traditional Indonesian woodworking.',
-      descriptionId: 'Setiap karya dibuat dengan cinta dan dedikasi terhadap kerajinan kayu tradisional Indonesia.',
+      title: language === 'id' ? 'Ramah Lingkungan' : 'Eco-Friendly',
+      description: language === 'id' 
+        ? 'Menggunakan bahan kayu berkualitas tinggi yang aman dan ramah lingkungan'
+        : 'Using high-quality wood materials that are safe and environmentally friendly',
+      icon: '🌱'
     },
     {
-      icon: Award,
-      title: 'Quality',
-      titleId: 'Kualitas',
-      description: 'We use only the finest materials and time-tested techniques to ensure lasting beauty.',
-      descriptionId: 'Kami hanya menggunakan bahan terbaik dan teknik yang telah teruji waktu untuk memastikan keindahan yang tahan lama.',
+      title: language === 'id' ? 'Handmade' : 'Handcrafted',
+      description: language === 'id'
+        ? 'Setiap produk dibuat dengan tangan oleh pengrajin berpengalaman'
+        : 'Every product is handcrafted by experienced artisans',
+      icon: '✋'
     },
     {
-      icon: Leaf,
-      title: 'Sustainability',
-      titleId: 'Keberlanjutan',
-      description: 'Our commitment to eco-friendly practices protects the environment for future generations.',
-      descriptionId: 'Komitmen kami terhadap praktik ramah lingkungan melindungi lingkungan untuk generasi mendatang.',
+      title: language === 'id' ? 'Edukatif' : 'Educational',
+      description: language === 'id'
+        ? 'Dirancang untuk mengembangkan kreativitas dan kecerdasan anak'
+        : 'Designed to develop children\'s creativity and intelligence',
+      icon: '🧠'
     },
     {
-      icon: Users,
-      title: 'Community',
-      titleId: 'Komunitas',
-      description: 'We support local artisans and contribute to the preservation of traditional crafts.',
-      descriptionId: 'Kami mendukung pengrajin lokal dan berkontribusi pada pelestarian kerajinan tradisional.',
+      title: language === 'id' ? 'Aman' : 'Safe',
+      description: language === 'id'
+        ? 'Menggunakan cat non-toxic dan finishing yang aman untuk anak-anak'
+        : 'Using non-toxic paint and child-safe finishing',
+      icon: '🛡️'
+    }
+  ];
+
+  const timeline = [
+    {
+      year: '2018',
+      title: language === 'id' ? 'Awal Mula' : 'The Beginning',
+      description: language === 'id'
+        ? 'Pak Budi memulai usaha kecil membuat mainan kayu untuk cucunya'
+        : 'Mr. Budi started a small business making wooden toys for his grandchildren'
     },
+    {
+      year: '2019',
+      title: language === 'id' ? 'Berkembang' : 'Growing',
+      description: language === 'id'
+        ? 'Mulai menerima pesanan dari tetangga dan teman-teman'
+        : 'Started receiving orders from neighbors and friends'
+    },
+    {
+      year: '2021',
+      title: language === 'id' ? 'Online' : 'Going Online',
+      description: language === 'id'
+        ? 'Meluncurkan toko online dan media sosial'
+        : 'Launched online store and social media presence'
+    },
+    {
+      year: '2024',
+      title: language === 'id' ? 'Ekspansi' : 'Expansion',
+      description: language === 'id'
+        ? 'Mengembangkan produk baru dan jangkauan ke seluruh Indonesia'
+        : 'Developing new products and expanding reach across Indonesia'
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero section */}
-      <section className="relative h-96 flex items-center justify-center bg-gradient-to-r from-amber-800 to-amber-600">
-        <div className="absolute inset-0 bg-black/30"></div>
-        <div className="relative text-center text-white z-10">
-          <h1 className="text-5xl font-bold mb-4">{t.about.title}</h1>
-          <div className="w-24 h-1 bg-white mx-auto"></div>
+    <div className="min-h-screen bg-wood-50">
+      {/* Hero Section */}
+      <section className="bg-wood-gradient py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="font-playfair font-bold text-4xl sm:text-5xl text-wood-900 mb-6">
+              {language === 'id' ? 'Tentang Kayu Ceria' : 'About Kayu Ceria'}
+            </h1>
+            <p className="text-xl text-wood-700 max-w-3xl mx-auto">
+              {language === 'id'
+                ? 'Kami adalah UMKM keluarga yang berdedikasi menciptakan mainan kayu edukatif berkualitas tinggi untuk anak-anak Indonesia.'
+                : 'We are a family UMKM dedicated to creating high-quality educational wooden toys for Indonesian children.'
+              }
+            </p>
+          </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* Story Section */}
-        <section className="mb-20">
+      {/* Story Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">{t.about.story}</h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <h2 className="font-playfair font-bold text-3xl text-wood-900 mb-6">
+                {language === 'id' ? 'Cerita Kami' : 'Our Story'}
+              </h2>
+              <div className="space-y-4 text-wood-700">
                 <p>
-                  Legowo was born in the heart of Yogyakarta, where traditional Indonesian craftsmanship meets modern design sensibilities. Our journey began with a simple belief: that handcrafted wooden products should not only be beautiful but also carry the soul of their creators.
+                  {language === 'id'
+                    ? 'Kayu Ceria dimulai dari kecintaan seorang kakek terhadap cucunya. Pak Budi, seorang pengrajin kayu berpengalaman, mulai membuat mainan sederhana untuk menghibur cucu-cucunya di rumah.'
+                    : 'Kayu Ceria started from a grandfather\'s love for his grandchildren. Mr. Budi, an experienced wood craftsman, began making simple toys to entertain his grandchildren at home.'
+                  }
                 </p>
                 <p>
-                  Founded by a family of skilled artisans, we've been dedicated to preserving the ancient art of woodworking while adapting to contemporary needs. Each piece in our collection tells a story of patience, skill, and deep respect for the natural materials we work with.
+                  {language === 'id'
+                    ? 'Melihat antusiasme anak-anak dan permintaan dari para orang tua di sekitar, kami memutuskan untuk mengembangkan usaha ini menjadi UMKM yang melayani kebutuhan mainan edukatif di seluruh Indonesia.'
+                    : 'Seeing the children\'s enthusiasm and requests from parents around, we decided to develop this business into a UMKM serving educational toy needs throughout Indonesia.'
+                  }
                 </p>
                 <p>
-                  Today, we're proud to share our heritage with families around the world, creating products that bring warmth, character, and timeless beauty to homes everywhere.
+                  {language === 'id'
+                    ? 'Setiap mainan yang kami buat mengandung nilai-nilai pembelajaran, kreativitas, dan keamanan yang tinggi. Kami bangga menjadi bagian dari perjalanan tumbuh kembang anak-anak Indonesia.'
+                    : 'Every toy we make contains high learning values, creativity, and safety. We are proud to be part of the growth and development journey of Indonesian children.'
+                  }
                 </p>
               </div>
             </div>
-            <div className="relative">
+            <div>
               <img
-                src="https://images.unsplash.com/photo-1472396961693-142e6e269027?w=600&h=400&fit=crop"
+                src="/placeholder.svg"
                 alt="Our workshop"
-                className="rounded-lg shadow-xl w-full h-96 object-cover"
+                className="w-full h-auto rounded-2xl shadow-lg"
               />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Vision & Mission */}
-        <section className="mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-3xl font-bold text-amber-800 mb-6">{t.about.vision}</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                To be the world's most trusted source of handcrafted wooden products, preserving traditional Indonesian craftsmanship while creating sustainable livelihoods for local artisans.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-8">
-              <h3 className="text-3xl font-bold text-amber-800 mb-6">{t.about.mission}</h3>
-              <p className="text-gray-700 leading-relaxed text-lg">
-                To create beautiful, sustainable wooden products that enhance lives, support traditional craftsmanship, and contribute to environmental conservation through responsible sourcing and production.
-              </p>
-            </div>
+      {/* Values Section */}
+      <section className="py-20 bg-wood-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-wood-900 mb-4">
+              {language === 'id' ? 'Nilai-Nilai Kami' : 'Our Values'}
+            </h2>
           </div>
-        </section>
 
-        {/* Values */}
-        <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <value.icon size={32} className="text-amber-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.description}</p>
-              </div>
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow border-wood-200">
+                <CardContent className="p-6">
+                  <div className="text-4xl mb-4">{value.icon}</div>
+                  <h3 className="font-playfair font-semibold text-xl text-wood-800 mb-2">
+                    {value.title}
+                  </h3>
+                  <p className="text-wood-600">{value.description}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Gallery */}
-        <section>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Workshop</h2>
-            <div className="w-24 h-1 bg-amber-600 mx-auto"></div>
+      {/* Timeline Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-wood-900 mb-4">
+              {language === 'id' ? 'Perjalanan Kami' : 'Our Journey'}
+            </h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop',
-              'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop',
-            ].map((image, index) => (
-              <div key={index} className="relative h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <img
-                  src={image}
-                  alt={`Workshop image ${index + 1}`}
-                  className="object-cover hover:scale-105 transition-transform duration-300 w-full h-full"
-                />
+
+          <div className="max-w-4xl mx-auto">
+            {timeline.map((item, index) => (
+              <div key={index} className="flex items-start mb-8 last:mb-0">
+                <div className="flex-shrink-0 w-20 text-right mr-6">
+                  <span className="inline-block bg-wood-500 text-white px-3 py-1 rounded-full font-bold">
+                    {item.year}
+                  </span>
+                </div>
+                <div className="flex-1 border-l-2 border-wood-200 pl-6 pb-8">
+                  <h3 className="font-playfair font-semibold text-xl text-wood-800 mb-2">
+                    {item.title}
+                  </h3>
+                  <p className="text-wood-600">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 bg-wood-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-playfair font-bold text-3xl sm:text-4xl text-wood-900 mb-4">
+              {language === 'id' ? 'Tim Kami' : 'Our Team'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <Card className="text-center border-wood-200">
+              <CardContent className="p-6">
+                <img
+                  src="/placeholder.svg"
+                  alt="Pak Budi"
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="font-playfair font-semibold text-xl text-wood-800 mb-2">
+                  Pak Budi
+                </h3>
+                <p className="text-wood-600 mb-2">
+                  {language === 'id' ? 'Pendiri & Master Craftsman' : 'Founder & Master Craftsman'}
+                </p>
+                <p className="text-sm text-wood-500">
+                  {language === 'id' ? '25+ tahun pengalaman' : '25+ years experience'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-wood-200">
+              <CardContent className="p-6">
+                <img
+                  src="/placeholder.svg"
+                  alt="Bu Sari"
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="font-playfair font-semibold text-xl text-wood-800 mb-2">
+                  Bu Sari
+                </h3>
+                <p className="text-wood-600 mb-2">
+                  {language === 'id' ? 'Desainer & Quality Control' : 'Designer & Quality Control'}
+                </p>
+                <p className="text-sm text-wood-500">
+                  {language === 'id' ? 'Ahli desain mainan anak' : 'Children\'s toy design expert'}
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-wood-200">
+              <CardContent className="p-6">
+                <img
+                  src="/placeholder.svg"
+                  alt="Andi"
+                  className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                />
+                <h3 className="font-playfair font-semibold text-xl text-wood-800 mb-2">
+                  Andi
+                </h3>
+                <p className="text-wood-600 mb-2">
+                  {language === 'id' ? 'Digital Marketing' : 'Digital Marketing'}
+                </p>
+                <p className="text-sm text-wood-500">
+                  {language === 'id' ? 'Mengelola media sosial & online' : 'Managing social media & online'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default AboutPage;
+export default About;

@@ -1,5 +1,6 @@
+'use client'
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer: React.FC = () => {
@@ -62,7 +63,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-2">
               <li>
                 <Link
-                  to="/"
+                  href="/"
                   className="text-wood-300 hover:text-wood-100 transition-colors"
                 >
                   Home
@@ -70,7 +71,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="/products"
+                  href="/products"
                   className="text-wood-300 hover:text-wood-100 transition-colors"
                 >
                   {t.navigation.products}
@@ -78,7 +79,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="/about"
+                  href="/about"
                   className="text-wood-300 hover:text-wood-100 transition-colors"
                 >
                   {t.navigation.about}
@@ -86,7 +87,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="text-wood-300 hover:text-wood-100 transition-colors"
                 >
                   {t.navigation.contact}

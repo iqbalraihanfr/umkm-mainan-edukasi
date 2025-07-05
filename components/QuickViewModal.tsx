@@ -1,4 +1,4 @@
-
+'use client'
 import React from 'react';
 import { X, Heart, ShoppingCart } from 'lucide-react';
 import { Product } from '@/types';

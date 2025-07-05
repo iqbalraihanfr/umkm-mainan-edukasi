@@ -1,5 +1,6 @@
+'use client'
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { Product } from "@/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
@@ -78,7 +79,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickView }) => {
         </div>
 
         <div className="flex gap-2">
-          <Link to={`/products/${product.slug}`} className="flex-1">
+          <Link href={`/products/${product.slug}`} className="flex-1">
             <Button
               variant="outline"
               size="sm"
